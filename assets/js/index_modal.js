@@ -139,7 +139,7 @@ document.getElementById('loginForm').addEventListener('submit', (e) => {
 
         modalManager.hideModals();
         // Redirect to dashboard
-        window.location.href = '../../webapp/pages/dashboard.html'; // Adjust based on your project structure
+        window.location.href = '../../web-app/pages/dashboard.html'; // Adjust based on your project structure
     } catch (error) {
         alert(error.message);
     }
