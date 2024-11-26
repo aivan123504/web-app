@@ -1,10 +1,3 @@
-
-
-
-
-
-
-
 // On page load, retrieve user data from localStorage
 window.addEventListener('load', () => {
     const user = JSON.parse(localStorage.getItem('loggedInUser'));
