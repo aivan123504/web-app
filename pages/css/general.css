@@ -1,0 +1,132 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.logo p {
+    font-size: 12px;
+}
+
+.sidebar {
+    margin-top: 60px;
+    height: 100vh;
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #4caf50;
+    color: #fff;
+    transition: transform 0.3s ease;
+}
+
+.sidebar .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    padding: 20px;
+    background: #1a252f;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar ul li {
+    font-weight: bold;
+    padding: 15px 20px;
+}
+
+.sidebar ul li:hover {
+    background: #34495e;
+    cursor: pointer;
+}
+
+.content {
+    margin-left: 250px;
+    padding: 20px;
+    transition: margin-left 0.3s ease;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background: #4caf50;
+    color: #fff;
+    position: relative;
+}
+
+.hamburger {
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 999;
+    color: #fff;
+}
+
+.sidebar-hidden {
+    transform: translateX(-100%);
+}
+
+.content-expanded {
+    margin-left: 0;
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+}
+
+.profile-header img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.profile-header h2 {
+    margin: 0;
+}
+
+.active {
+    background-color: #8de790;
+    color: black;
+}
+
+.active:hover {
+    color: white;
+}
+
+.card {
+    border: none;
+    margin: 15px 0;
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card-img {
+    height: 200px; /* Set a specific height for the images */
+    width: 100%; /* Ensure the image takes up the full width of the card */
+    object-fit: cover; /* Ensure the image covers the space without distortion */
+}
+
+.stars {
+    color: gold;
+}
+
+.search-bar {
+    margin-bottom: 20px;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+a:hover {
+    color: inherit;
+}

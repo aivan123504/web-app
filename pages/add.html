@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Content</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/general.css">
+    <style>
+        .form-button{
+            margin-top: 10px;
+            background-color: green;
+            border-radius: 5px;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="sidebar" id="sidebar">
+        <div class="logo">
+            <h3>SPCS</h3>
+            <p>*Solar Powered Charging Station*</p>
+        </div>
+        <ul>
+            <a href="dashboard.html">
+                <li>Dashboard</li>
+            </a>
+            <a href="add.html">
+                <li class="active">Add New</li>
+            </a>
+            <a href="reports.html">
+                <li>Reports</li>
+            </a>
+            <a href="#" id="logout-link">
+                <li>Logout</li>
+            </a>
+        </ul>
+    </div>
+
+    <div class="header">
+        <span class="hamburger" id="hamburger"><i class="fas fa-bars"></i></span>
+        <div class="profile-header" id="profile-header">
+            <img src="../assets/img/profile-user.png" alt="Profile" id="profile-img">
+            <h2 id="user-name">Loading...</h2>
+        </div>
+    </div>
+
+    <div class="content" id="content">
+        <div class="container">
+            <h2 class="text-center">Add New</h2>
+            <form id="add-content-form">
+                <div class="form-group">
+                    <label for="title">Location</label>
+                    <input type="text" id="title" name="title" class="form-control" placeholder="Enter title" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea id="description" name="description" class="form-control" rows="4" placeholder="Enter description" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="image">Choose Image</label>
+                    <input type="file" id="image" name="image" class="form-control" accept="image/*" required>
+                </div>
+
+                <button type="submit" class="form-button">Add</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("add-content-form").addEventListener("submit", function (e) {
+    e.preventDefault(); // Prevent form submission
+
+    // Get form values
+    const title = document.getElementById("title").value;
+    const description = document.getElementById("description").value;
+    const imageInput = document.getElementById("image").files[0];
+
+    // Convert image to a base64 string
+    const reader = new FileReader();
+    reader.onload = function (event) {
+        const imageBase64 = event.target.result;
+
+        // Create content object
+        const newContent = { title, description, image: imageBase64 };
+
+        // Get existing data from localStorage
+        const storedData = JSON.parse(localStorage.getItem("contentData")) || [];
+
+        // Add the new content to the array
+        storedData.push(newContent);
+
+        // Save updated data back to localStorage
+        localStorage.setItem("contentData", JSON.stringify(storedData));
+
+        // Redirect to dashboard.html
+        window.location.href = "dashboard.html";
+    };
+
+    reader.readAsDataURL(imageInput); // Read the uploaded image
+});
+
+    </script>
+</body>
+
+<script src="js/dashboard.js"></script>
+</html>

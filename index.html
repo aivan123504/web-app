@@ -4,156 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Solar Powered Charging Station</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            color: #2c3e50;
-            background-color: #f0f8ec;
-        }
-
-        header {
-            background-color: #4caf50;
-            color: white;
-            padding: 1rem 2rem;
-            text-align: center;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        header h1 {
-            margin: 0;
-            font-size: 2.5rem;
-        }
-
-        header p {
-            margin: 0.5rem 0 0;
-            font-size: 1.2rem;
-        }
-
-        .hero {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: space-around;
-            padding: 2rem;
-            background-image: url('https://source.unsplash.com/1600x900/?solar,green-energy');
-            background-size: cover;
-            background-position: center;
-            color: white;
-            text-align: center;
-            min-height: 60vh;
-        }
-
-        .hero h2 {
-            font-size: 2.5rem;
-            margin: 0 0 1rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 600px;
-            margin: 0 auto;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
-        }
-
-        .cta {
-            margin-top: 2rem;
-        }
-
-        .cta a {
-            text-decoration: none;
-            background-color: #4caf50;
-            color: white;
-            padding: 0.8rem 1.5rem;
-            border-radius: 5px;
-            font-size: 1.1rem;
-            transition: background-color 0.3s;
-        }
-
-        .cta a:hover {
-            background-color: #45a049;
-        }
-
-        .banner {
-            position: relative;
-            overflow: hidden;
-            height: 300px;
-            background-color: #f0f8ec;
-            margin: 2rem 0;
-        }
-
-        .banner-images {
-            display: flex;
-            transition: transform 0.5s ease-in-out;
-            will-change: transform;
-        }
-
-        .banner-image {
-            flex: 0 0 100%;
-            position: relative;
-            text-align: center;
-        }
-
-        .banner-image img {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-        }
-
-        .banner-description {
-            position: absolute;
-            bottom: 10%;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(0, 0, 0, 0.5);
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
-            font-size: 1.1rem;
-        }
-
-        section {
-            padding: 2rem;
-        }
-
-        .features {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-            gap: 1rem;
-        }
-
-        .feature-card {
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            padding: 1rem;
-            max-width: 300px;
-            text-align: center;
-            flex: 1 1 calc(33% - 1rem);
-        }
-
-        .feature-card img {
-            width: 60px;
-            margin-bottom: 1rem;
-        }
-
-        footer {
-            text-align: center;
-            background-color: #4caf50;
-            color: white;
-            padding: 1rem;
-            font-size: 0.9rem;
-            margin-top: 2rem;
-        }
-    </style>
+    <link rel="stylesheet" href="assets/css/index.css">
 </head>
 <body>
     <header>
         <h1>Solar Powered Charging Station</h1>
         <p>Your eco-friendly solution to energy needs</p>
+        <div class="auth-buttons">
+            <button id="loginBtn">Login</button>
+            <button id="signUpBtn">Sign Up</button>
+        </div>
     </header>
 
     <div class="hero">
@@ -161,7 +21,7 @@
             <h2>Powering a Sustainable Future</h2>
             <p>Welcome to the Solar Powered Charging Station web application. Locate the nearest charging station and help us create a greener tomorrow. Join our mission to harness the power of the sun for a cleaner, sustainable world.</p>
             <div class="cta">
-                <a href="#stations">Find a Charging Station</a>
+                <a href="https://aivan123504.github.io/spcs_website/" target="_blank">Find a Charging Station</a>
             </div>
         </div>
     </div>
@@ -170,15 +30,15 @@
     <div class="banner">
         <div class="banner-images" id="banner-images">
             <div class="banner-image">
-                <img src="https://source.unsplash.com/1600x900/?solar-panels" alt="Solar Panels">
+                <img src="assets/img/what-are-the-advantages-of-solar.png" alt="Solar Panels">
                 <div class="banner-description">Efficient Solar Panels for Clean Energy</div>
             </div>
             <div class="banner-image">
-                <img src="https://source.unsplash.com/1600x900/?electric-vehicles" alt="Electric Vehicles">
+                <img src="assets/img/Renewable-energy-copy.png" alt="Electric Vehicles">
                 <div class="banner-description">Charge Your EV with Sustainable Energy</div>
             </div>
             <div class="banner-image">
-                <img src="https://source.unsplash.com/1600x900/?green-energy" alt="Green Energy">
+                <img src="assets/img/solar-panel1.png" alt="Green Energy">
                 <div class="banner-description">Join Us in Building a Greener Tomorrow</div>
             </div>
         </div>
@@ -193,37 +53,52 @@
         <h2>Why Choose Us?</h2>
         <div class="features">
             <div class="feature-card">
-                <img src="https://img.icons8.com/external-flat-juicy-fish/64/000000/external-solar-panel-ecology-flat-flat-juicy-fish.png" alt="Solar Energy">
+                <img src="assets/img/biodegradable.png" alt="Solar Energy">
                 <h3>Eco-Friendly</h3>
                 <p>Our stations run on clean, renewable solar energy, reducing carbon footprints.</p>
             </div>
             <div class="feature-card">
-                <img src="https://img.icons8.com/ios/64/000000/location.png" alt="Location">
+                <img src="assets/img/location.png" alt="Location">
                 <h3>Find Nearby</h3>
                 <p>Easily locate charging stations nearest to you through our web app.</p>
             </div>
             <div class="feature-card">
-                <img src="https://img.icons8.com/ios-filled/64/000000/electricity.png" alt="Charging">
+                <img src="assets/img/charging-station.png" alt="Charging">
                 <h3>Reliable Power</h3>
                 <p>Enjoy seamless and efficient charging services powered by the sun.</p>
             </div>
         </div>
     </section>
 
+    <!-- Login Modal -->
+    <div class="modal" id="loginModal">
+        <h2>Login</h2>
+        <form id="loginForm">
+            <input type="email" id="loginEmail" placeholder="Email" required>
+            <input type="password" id="loginPassword" placeholder="Password" required>
+            <button type="submit">Login</button>
+        </form>
+        <span class="link" id="toSignUp">Don't have an account? Sign up</span>
+    </div>
+
+    <!-- Sign Up Modal -->
+    <div class="modal" id="signUpModal">
+        <h2>Sign Up</h2>
+        <form id="signUpForm">
+            <input type="text" id="signUpName" placeholder="Name" required>
+            <input type="email" id="signUpEmail" placeholder="Email" required>
+            <input type="password" id="signUpPassword" placeholder="Password" required>
+            <button type="submit">Sign Up</button>
+        </form>
+        <span class="link" id="toLogin">Already have an account? Login</span>
+    </div>
+
+    <div class="overlay" id="overlay"></div>
     <footer>
         &copy; 2024 Solar Powered Charging Station. All rights reserved.
     </footer>
 
-    <script>
-        const bannerImages = document.getElementById('banner-images');
-        let currentIndex = 0;
-
-        function scrollBanner() {
-            currentIndex = (currentIndex + 1) % 3; // Update to match the number of images
-            bannerImages.style.transform = `translateX(-${currentIndex * 100}%)`;
-        }
-
-        setInterval(scrollBanner, 2000); // Auto-scroll every 2 seconds
-    </script>
+    <script src="assets/js/index_banner.js"></script>
+    <script src="assets/js/index_modal.js"></script>
 </body>
 </html>

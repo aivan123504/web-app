@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/general.css">
+</head>
+
+<body>
+    <div class="sidebar" id="sidebar">
+        <div class="logo">
+            <h3>SPCS</h3>
+            <p>*Solar Powered Charging Station*</p>
+        </div>
+        <ul>
+            <a href="dashboard.html">
+                <li class="active">Dashboard</li>
+            </a>
+            <a href="add.html">
+                <li>Add New</li>
+            </a>
+            <a href="reports.html">
+                <li>Reports</li>
+            </a>
+            <a href="#" id="logout-link">
+                <li>Logout</li>
+            </a>
+        </ul>
+    </div>
+
+    <div class="header">
+        <span class="hamburger" id="hamburger"><i class="fas fa-bars"></i></span>
+        <div class="profile-header" id="profile-header">
+            <img src="../assets/img/profile-user.png" alt="Profile" id="profile-img">
+            <h2 id="user-name">Loading...</h2>
+        </div>
+    </div>
+
+    <div class="content" id="content">
+        <h3>Reports</h3>
+        <input type="text" id="search-bar" class="form-control mb-3" placeholder="Search Reports by Title or Description" />
+
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="reports-table-body">
+                <!-- Rows will be generated dynamically -->
+            </tbody>
+        </table>
+
+        <div class="mt-3">
+            <button id="export-csv" class="btn btn-success">Export to CSV</button>
+            <button id="export-json" class="btn btn-primary">Export to JSON</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const reportsTableBody = document.getElementById("reports-table-body");
+            const searchBar = document.getElementById("search-bar");
+
+            // Retrieve data from localStorage
+            const storedData = JSON.parse(localStorage.getItem("contentData")) || [];
+
+            // Function to render the table rows
+            function renderTable(data) {
+                reportsTableBody.innerHTML = ""; // Clear existing rows
+                data.forEach((content, index) => {
+                    const row = document.createElement("tr");
+                    row.innerHTML = `
+                        <td>${index + 1}</td>
+                        <td>${content.title}</td>
+                        <td>${content.description}</td>
+                        <td>
+                            <button class="btn btn-danger btn-sm delete-btn" data-index="${index}">Delete</button>
+                        </td>
+                    `;
+                    reportsTableBody.appendChild(row);
+                });
+
+                // Add delete functionality
+                document.querySelectorAll(".delete-btn").forEach((button) => {
+                    button.addEventListener("click", function () {
+                        const index = this.getAttribute("data-index");
+                        storedData.splice(index, 1);
+                        localStorage.setItem("contentData", JSON.stringify(storedData));
+                        renderTable(storedData); // Re-render the table
+                    });
+                });
+            }
+
+            // Initial render
+            renderTable(storedData);
+
+            // Search functionality
+            searchBar.addEventListener("input", function () {
+                const searchQuery = searchBar.value.toLowerCase();
+                const filteredData = storedData.filter(
+                    (content) =>
+                        content.title.toLowerCase().includes(searchQuery) ||
+                        content.description.toLowerCase().includes(searchQuery)
+                );
+                renderTable(filteredData);
+            });
+
+            // Export to CSV
+            document.getElementById("export-csv").addEventListener("click", function () {
+                const csvContent =
+                    "data:text/csv;charset=utf-8," +
+                    ["Title,Description"]
+                        .concat(
+                            storedData.map(
+                                (content) => `"${content.title}","${content.description}"`
+                            )
+                        )
+                        .join("\n");
+
+                const encodedUri = encodeURI(csvContent);
+                const link = document.createElement("a");
+                link.setAttribute("href", encodedUri);
+                link.setAttribute("download", "reports.csv");
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            });
+
+            // Export to JSON
+            document.getElementById("export-json").addEventListener("click", function () {
+                const dataStr = JSON.stringify(storedData, null, 2);
+                const blob = new Blob([dataStr], { type: "application/json" });
+                const url = URL.createObjectURL(blob);
+                const link = document.createElement("a");
+                link.href = url;
+                link.download = "reports.json";
+                link.click();
+            });
+        });
+    </script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>
