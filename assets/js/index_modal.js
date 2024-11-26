@@ -35,7 +35,7 @@ class UserAuth {
         users.push({ name, email, password });
         this.saveUsers(users);
 
-        return 'Account created successfully!';
+        return 'Account created successfully! You can login now';
     }
 
     // Log in a user
